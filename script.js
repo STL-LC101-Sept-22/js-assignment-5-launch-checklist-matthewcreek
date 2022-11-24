@@ -2,17 +2,9 @@
 
 window.addEventListener("load", function() {
     let form = document.getElementById('formSubmit');
-    let pilotForm = document.getElementById('pilotName');
-    let copilotForm = document.getElementById('copilotName');
-    let fuelForm = document.getElementById('fuelLevel');
-    let cargoForm = document.getElementById('cargoMass');
-    
     form.addEventListener('click', function(event){
-     if (validateInput(pilotForm) === 'Empty'){
-        alert('all forms must be entered')
-        event.preventDefault();
-
-     }
+     alert('i clicked the button')
+     console.log('i clicked the button')
     })
    let listedPlanets;
    // Set listedPlanetsResponse equal to the value returned by calling myFetch()
