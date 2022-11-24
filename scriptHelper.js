@@ -34,11 +34,13 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         fuelLevel: fuelLevel.value,
         cargoLevel: cargoLevel.value,
         formValues: valueArr,
-    }
-    valueArr.push(validateInput(pilot.value))
-    valueArr.push(validateInput(copilot.value))
-    valueArr.push(validateInput(fuelLevel.value))
-    valueArr.push(validateInput(cargoLevel.value))
+    };
+    valueArr.push(validateInput(pilot.value));
+    valueArr.push(validateInput(copilot.value));
+    valueArr.push(validateInput(fuelLevel.value));
+    valueArr.push(validateInput(cargoLevel.value));
+
+
     return formResults;
 }
 
