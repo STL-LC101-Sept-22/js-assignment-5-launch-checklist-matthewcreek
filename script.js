@@ -6,24 +6,28 @@ window.addEventListener("load", function () {
     let copilotForm = document.querySelector('input[name=copilotName]');
     let fuelForm = document.querySelector('input[name=fuelLevel]');
     let cargoForm = document.querySelector('input[name=cargoMass]');
+    let listFaulty = document.getElementById('faultyItems');
 
     form.addEventListener('click', function (event) {
-        if (validateInput(pilotForm.value) !== 'Not a number') {
+        let submission = formSubmission(this.document, listFaulty, pilotForm, copilotForm, fuelForm, cargoForm);
+        console.log(submission.list);
+
+        if (submission.formValues[0] !== 'Not a number') {
             alert('All forms must be filled out correctly');
             event.preventDefault();
-        } else if (validateInput(copilotForm.value) !== 'Not a number') {
+        } else if (submission.formValues[1] !== 'Not a number') {
             alert('All forms must be filled out correctly');
             event.preventDefault();
-        } else if (validateInput(fuelForm.value) !== 'Is a number') {
+        } else if (submission.formValues[2] !== 'Is a number') {
             alert('All forms must be filled out correctly');
             event.preventDefault();
-        } else if (validateInput(cargoForm.value) !== 'Is a number') {
+        } else if (submission.formValues[3] !== 'Is a number') {
             alert('All forms must be filled out correctly');
             event.preventDefault();
         }
 
+    });
 
-    })
     let listedPlanets;
     // Set listedPlanetsResponse equal to the value returned by calling myFetch()
     let listedPlanetsResponse;
