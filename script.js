@@ -19,21 +19,15 @@ window.addEventListener("load", function () {
     form.addEventListener('click', function (event) {
         let submission = formSubmission(this.document, listFaulty, pilotForm, copilotForm, fuelForm, cargoForm);
 
-        console.log(submission)
-
-        if (submission.formValues[0] !== 'Not a number') {
-            alert('All forms must be filled out correctly');
+        if (submission.formValues[0] !== 'Not a number' || submission.formValues[1] !== 'Not a number') {
+            alert('All fields are required!');
             event.preventDefault();
-        } else if (submission.formValues[1] !== 'Not a number') {
-            alert('All forms must be filled out correctly');
+        } else if (submission.formValues[0] === 'Is a number' || submission.formValues[1] === 'Is a number' || submission.formValues[2] === 'Not a number' ||submission.formValues[3] === 'Not a number') {
+            alert('Make sure to enter valid information for each field!');
+            launchStatus.innerText = 'Shuttle not ready for launch';
+            launchStatus.style.color = 'red';
             event.preventDefault();
-        } else if (submission.formValues[2] !== 'Is a number') {
-            alert('Field must be a number');
-            event.preventDefault();
-        } else if (submission.formValues[3] !== 'Not a number') {
-            alert('Field must be a number');
-            event.preventDefault();
-        }
+        } 
 
         if (submission.formValues[0] === 'Not a number' && submission.formValues[1] === 'Not a number') {
             listFaulty.style.visibility = 'visible'
@@ -48,7 +42,7 @@ window.addEventListener("load", function () {
             } else if (fuelForm.value >= 10000) {
                 fuelStatus.innerText = 'Fuel level high enough for launch.';
                 fuelLaunch = true;
-            }
+            } 
             if (cargoForm.value > 10000) {
                 cargoStatus.innerText = 'Cargo mass too heavy for launch.';
                 launchStatus.innerText = 'Shuttle not ready for launch';
@@ -79,11 +73,8 @@ window.addEventListener("load", function () {
     }).then(function () {
         console.log(listedPlanets);
         // Below this comment call the appropriate helper functions to pick a planet fom the list of planets and add that information to your destination.
-        console.log(pickPlanet(listedPlanets));
+        let chosenPlanet = pickPlanet(listedPlanets);
+        addDestinationInfo(this.document, chosenPlanet.name, chosenPlanet.diameter, chosenPlanet.star, chosenPlanet.distance, chosenPlanet.moons, chosenPlanet.image)
     })
-
-
-
-
 
 });
