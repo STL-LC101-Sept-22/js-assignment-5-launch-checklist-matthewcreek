@@ -38,20 +38,20 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    let valueArr = [];
-    let formResults = {
-        list: list,
-        pilot: pilot.value,
-        copilot: copilot.value,
-        fuelLevel: fuelLevel.value,
-        cargoLevel: cargoLevel.value,
-        formValues: valueArr,
-    };
-    valueArr.push(validateInput(pilot.value));
-    valueArr.push(validateInput(copilot.value));
-    valueArr.push(validateInput(fuelLevel.value));
-    valueArr.push(validateInput(cargoLevel.value));
+    let pilotStatus = document.getElementById('pilotStatus').innerHTML;
+    let copilotStatus = document.getElementById('copilotStatus').innerHTML;
+    let fuelStatus = document.getElementById('fuelStatus').innerHTML;
+    let cargoStatus = document.getElementById('cargoStatus').innerHTML;
+    let launchStatus = document.getElementById('launchStatus').innerHTML;
 
+    let formResults = {
+        pilotStatus: pilotStatus,
+        copilotStatus: copilotStatus,
+        fuelStatus: fuelStatus,
+        cargoStatus: cargoStatus,
+        launchStatus: launchStatus,
+    }
+  
 
     return formResults;
 }
