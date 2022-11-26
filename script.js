@@ -6,10 +6,10 @@ window.addEventListener("load", function () {
     let copilotForm = document.querySelector('input[name=copilotName]');
     let fuelForm = document.querySelector('input[name=fuelLevel]');
     let cargoForm = document.querySelector('input[name=cargoMass]');
-    let listFaulty = document.getElementById('faultyItems');
+    let list = document.getElementById('faultyItems');
 
     form.addEventListener('submit', function (event) {
-        const submission = formSubmission(document, listFaulty, pilotForm, copilotForm, fuelForm, cargoForm);
+        const submission = formSubmission(document, list, pilotForm, copilotForm, fuelForm, cargoForm);
 
         switch (submission.dataStatus) {
             case 'missing data':
