@@ -1,14 +1,14 @@
 // Write your JavaScript code here!
 
 window.addEventListener("load", function () {
-    let form = document.getElementById('formSubmit');
+    let form = document.getElementById('launchForm');
     let pilotForm = document.querySelector('input[name=pilotName]');
     let copilotForm = document.querySelector('input[name=copilotName]');
     let fuelForm = document.querySelector('input[name=fuelLevel]');
     let cargoForm = document.querySelector('input[name=cargoMass]');
     let listFaulty = document.getElementById('faultyItems');
 
-    form.addEventListener('click', function (event) {
+    form.addEventListener('submit', function (event) {
         const submission = formSubmission(document, listFaulty, pilotForm, copilotForm, fuelForm, cargoForm);
 
         switch (submission.dataStatus) {
