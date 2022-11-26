@@ -12,7 +12,10 @@ window.addEventListener("load", function () {
     form.addEventListener('submit', function (event) {
         const submission = formSubmission(document, list, pilotForm, copilotForm, fuelForm, cargoForm);
 
-        console.log(list.style.visibility)
+        console.log(list.style.visibility);
+        console.log(list.innerHTML);
+        console.log((submission.launchStatus).style.color);
+        console.log((submission.launchStatus).innerHTML);
 
         switch (submission.dataStatus) {
             case 'missing data':

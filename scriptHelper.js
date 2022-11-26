@@ -48,8 +48,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         dataStatus = 'improper data';
     } else if (fuelValidate !== 'Is a Number' || cargoValidate !== 'Is a Number') {
         dataStatus = 'improper data';
-        launchStatus.innerHTML = 'Shuttle not ready for launch';
-        launchStatus.style.color = 'red';
+        launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
+        launchStatus.style.color = "rgb(199, 37, 78)";
     };
     if (pilotValidate === 'Not a Number' && copilotValidate === 'Not a Number') {
         list.style.visibility = 'visible';
@@ -88,8 +88,8 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
             list.style.visibility = 'visible';
         } else {
             launchReady = 'no launch';
-            launchStatus.innerText = 'Shuttle not ready for launch';
-            launchStatus.style.color = 'red';
+            launchStatus.innerText = 'Shuttle Not Ready for Launch';
+            launchStatus.style.color = "rgb(199, 37, 78)";
             list.style.visibility = 'visible';
         };
     };
@@ -97,6 +97,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
     let formValues = {
         dataStatus: dataStatus,
         launchReady: launchReady,
+        launchStatus: launchStatus,
     };
     
     return formValues;
