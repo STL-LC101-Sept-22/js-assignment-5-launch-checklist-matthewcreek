@@ -26,10 +26,6 @@ function validateInput(testInput) {
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
-    console.log(pilot)
-    console.log(copilot)
-    console.log(fuelLevel)
-    console.log(cargoLevel)
     const pilotStatus = document.getElementById('pilotStatus');
     const copilotStatus = document.getElementById('copilotStatus');
     const fuelStatus = document.getElementById('fuelStatus');
@@ -66,28 +62,35 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         } else if (fuelLevel.value < 10000) {
             fuelStatus.innerText = 'Fuel level too low for launch.';
             fuelLaunch = false;
+            list.style.visibility = 'visible';
         } else if (fuelLevel.value >= 10000) {
             fuelStatus.innerText = 'Fuel level high enough for launch.';
             fuelLaunch = true;
+            list.style.visibility = 'visible';
         };
         if (cargoLevel.value > 10000) {
             cargoStatus.innerText = 'Cargo mass too heavy for launch.';
             cargoLaunch = false;
+            list.style.visibility = 'visible';
         } else if (cargoValidate === 'Empty' || cargoValidate === 'Not a Number') {
             cargoStatus.innerText = 'Cargo mass unknown.';
             cargoLaunch = false;
+            list.style.visibility = 'visible';
         } else if (cargoLevel.value <= 10000) {
             cargoStatus.innerText = 'Cargo mass light enough for launch.';
             cargoLaunch = true;
+            list.style.visibility = 'visible';
         };
         if (cargoLaunch && fuelLaunch) {
             launchStatus.innerText = 'Shuttle is ready for launch';
             launchStatus.style.color = 'green';
             launchReady = 'launch ready'
+            list.style.visibility = 'visible';
         } else {
             launchReady = 'no launch';
             launchStatus.innerText = 'Shuttle not ready for launch';
             launchStatus.style.color = 'red';
+            list.style.visibility = 'visible';
         };
     };
     
