@@ -2,70 +2,47 @@
 
 window.addEventListener("load", function () {
     let form = document.getElementById('formSubmit');
-
     let pilotForm = document.querySelector('input[name=pilotName]');
     let copilotForm = document.querySelector('input[name=copilotName]');
     let fuelForm = document.querySelector('input[name=fuelLevel]');
     let cargoForm = document.querySelector('input[name=cargoMass]');
     let listFaulty = document.getElementById('faultyItems');
 
-    //     console.log(listFaulty)
-    // let pilotStatus = document.getElementById('pilotStatus');
-    // let copilotStatus = document.getElementById('copilotStatus');
-    // let fuelStatus = document.getElementById('fuelStatus');
-    // let cargoStatus = document.getElementById('cargoStatus');
-    // let launchStatus = document.getElementById('launchStatus');
-    // let fuelLaunch;
-    // let cargoLaunch;
-
     form.addEventListener('click', function (event) {
-        let submission = formSubmission(document, listFaulty, pilotForm, copilotForm, fuelForm, cargoForm);
+        const submission = formSubmission(document, listFaulty, pilotForm, copilotForm, fuelForm, cargoForm);
+        console.log(submission.dataStatus);
+        console.log(submission.launchReady)
 
-        console.log(submission)
-        
-        if (submission.formValues[0] !== 'Not a number' || submission.formValues[1] !== 'Not a number') {
-            alert('All fields are required!');
-            event.preventDefault();
-        } else if (submission.formValues[0] === 'Is a number' || submission.formValues[1] === 'Is a number' || submission.formValues[2] === 'Not a number' ||submission.formValues[3] === 'Not a number') {
-            alert('Make sure to enter valid information for each field!');
-            launchStatus.innerText = 'Shuttle not ready for launch';
-            launchStatus.style.color = 'red';
-            event.preventDefault();
-        } 
-
-        // if (submission.formValues[0] === 'Not a number' && submission.formValues[1] === 'Not a number') {
-        //     listFaulty.style.visibility = 'visible'
-        //     pilotStatus.innerText = `Pilot ${pilotForm.value} is ready for launch.`
-        //     copilotStatus.innerText = `Copilot ${copilotForm.value} is ready for launch.`
-        //     if (fuelForm.value < 10000) {
-        //         fuelStatus.innerText = 'Fuel level too low for launch.';
-        //         launchStatus.innerText = 'Shuttle not ready for launch';
-        //         launchStatus.style.color = 'red';
-        //         fuelLaunch = false;
-        //         event.preventDefault();
-        //     } else if (fuelForm.value >= 10000) {
-        //         fuelStatus.innerText = 'Fuel level high enough for launch.';
-        //         fuelLaunch = true;
-        //     } 
-        //     if (cargoForm.value > 10000) {
-        //         cargoStatus.innerText = 'Cargo mass too heavy for launch.';
-        //         launchStatus.innerText = 'Shuttle not ready for launch';
-        //         launchStatus.style.color = 'red';
-        //         cargoLaunch = false;
-        //         event.preventDefault();
-        //     } else if (cargoForm.value <= 10000) {
-        //         cargoStatus.innerText = 'Cargo mass light enough for launch.';
-        //         cargoLaunch = true;
-        //     }
-        //     if (cargoLaunch && fuelLaunch) {
-        //         launchStatus.innerText = 'Shuttle is ready for launch';
-        //         launchStatus.style.color = 'green';
-        //         event.preventDefault();
-        //     }
-        // }
-
-
-
+        switch (submission.dataStatus) {
+            case 'missing data':
+                alert('All fields are required!');
+                event.preventDefault();
+                break;
+            case 'improper data':
+                alert('Make sure to enter valid information for each field!');
+                event.preventDefault();
+                break;
+            case '':
+                switch (submission.launchReady){
+                    case 'launch ready':
+                        event.preventDefault();
+                        break;
+                    case 'no launch':
+                        event.preventDefault();
+                        break;
+                    case '':
+                        console.log('launch status unknown');
+                        event.preventDefault();
+                        break;
+                    default:
+                        console.log('blank launch ready');
+                        event.preventDefault();
+                };
+                break;
+            default:
+                console.log('blank data status');
+                event.preventDefault();
+        };
     });
 
     let listedPlanets;
