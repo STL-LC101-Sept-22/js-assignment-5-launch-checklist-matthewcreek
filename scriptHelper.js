@@ -21,8 +21,8 @@ function validateInput(testInput) {
         return 'Empty';
     }
     if (isNaN(testInput)) {
-        return 'Not a number';
-    } else return 'Is a number';
+        return 'Not a Number';
+    } else return 'Is a Number';
 }
 
 function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
@@ -44,19 +44,19 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
 
     if (pilotValidate === 'Empty' || copilotValidate === 'Empty') {
         dataStatus = 'missing data';
-    } else if (pilotValidate !== 'Not a number' || copilotValidate !== 'Not a number') {
+    } else if (pilotValidate !== 'Not a Number' || copilotValidate !== 'Not a Number') {
         dataStatus = 'improper data';
-    } else if (fuelValidate !== 'Is a number' || cargoValidate !== 'Is a number') {
+    } else if (fuelValidate !== 'Is a Number' || cargoValidate !== 'Is a Number') {
         dataStatus = 'improper data';
         launchStatus.innerHTML = 'Shuttle not ready for launch';
         launchStatus.style.color = 'red';
     };
-    if (pilotValidate === 'Not a number' && copilotValidate === 'Not a number') {
+    if (pilotValidate === 'Not a Number' && copilotValidate === 'Not a Number') {
         list.style.visibility = 'visible';
         pilotStatus.innerHTML = `Pilot ${pilot.value} is ready for launch.`;
         copilotStatus.innerHTML = `Copilot ${copilot.value} is ready for launch.`;
 
-        if (fuelValidate === 'Not a number' || fuelValidate === 'Empty') {
+        if (fuelValidate === 'Not a Number' || fuelValidate === 'Empty') {
             fuelStatus.innerHTML = 'Fuel level unknown.';
             fuelLaunch = false;
         } else if (fuelLevel.value < 10000) {
@@ -69,7 +69,7 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         if (cargoLevel.value > 10000) {
             cargoStatus.innerText = 'Cargo mass too heavy for launch.';
             cargoLaunch = false;
-        } else if (cargoValidate === 'Empty' || cargoValidate === 'Not a number') {
+        } else if (cargoValidate === 'Empty' || cargoValidate === 'Not a Number') {
             cargoStatus.innerText = 'Cargo mass unknown.';
             cargoLaunch = false;
         } else if (cargoLevel.value <= 10000) {
