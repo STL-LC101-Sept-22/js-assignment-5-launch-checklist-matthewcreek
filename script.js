@@ -7,15 +7,11 @@ window.addEventListener("load", function () {
     let fuelForm = document.querySelector('input[name=fuelLevel]');
     let cargoForm = document.querySelector('input[name=cargoMass]');
     let list = document.getElementById('faultyItems');
+    
     list.style.visibility = 'hidden';
 
     form.addEventListener('submit', function (event) {
         const submission = formSubmission(document, list, pilotForm, copilotForm, fuelForm, cargoForm);
-
-        console.log(list.style.visibility);
-        console.log(list.innerHTML);
-        console.log((submission.launchStatus).style.color);
-        console.log((submission.launchStatus).innerHTML);
 
         switch (submission.dataStatus) {
             case 'missing data':

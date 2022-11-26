@@ -48,48 +48,43 @@ function formSubmission(document, list, pilot, copilot, fuelLevel, cargoLevel) {
         dataStatus = 'improper data';
     } else if (fuelValidate !== 'Is a Number' || cargoValidate !== 'Is a Number') {
         dataStatus = 'improper data';
-        launchStatus.innerHTML = 'Shuttle Not Ready for Launch';
-        launchStatus.style.color = "rgb(199, 37, 78)";
+        launchStatus.innerText = 'Shuttle Not Ready for Launch';
+        launchStatus.style.color = 'red';
     };
     if (pilotValidate === 'Not a Number' && copilotValidate === 'Not a Number') {
         list.style.visibility = 'visible';
-        pilotStatus.innerHTML = `Pilot ${pilot.value} is ready for launch.`;
-        copilotStatus.innerHTML = `Copilot ${copilot.value} is ready for launch.`;
+        pilotStatus.innerText = `Pilot ${pilot.value} is ready for launch`;
+        copilotStatus.innerText = `Co-pilot ${copilot.value} is ready for launch`;
 
         if (fuelValidate === 'Not a Number' || fuelValidate === 'Empty') {
-            fuelStatus.innerHTML = 'Fuel level unknown.';
+            fuelStatus.innerText = 'Fuel level unknown';
             fuelLaunch = false;
         } else if (fuelLevel.value < 10000) {
-            fuelStatus.innerText = 'Fuel level too low for launch.';
+            fuelStatus.innerText = 'Fuel level too low for launch';
             fuelLaunch = false;
-            list.style.visibility = 'visible';
         } else if (fuelLevel.value >= 10000) {
-            fuelStatus.innerText = 'Fuel level high enough for launch.';
+            fuelStatus.innerText = 'Fuel level high enough for launch';
             fuelLaunch = true;
-            list.style.visibility = 'visible';
         };
         if (cargoLevel.value > 10000) {
-            cargoStatus.innerText = 'Cargo mass too heavy for launch.';
+            cargoStatus.innerText = 'Cargo mass too heavy for launch';
             cargoLaunch = false;
-            list.style.visibility = 'visible';
         } else if (cargoValidate === 'Empty' || cargoValidate === 'Not a Number') {
             cargoStatus.innerText = 'Cargo mass unknown.';
-            cargoLaunch = false;
-            list.style.visibility = 'visible';
+            cargoLaunch = false;       
         } else if (cargoLevel.value <= 10000) {
-            cargoStatus.innerText = 'Cargo mass light enough for launch.';
+            cargoStatus.innerText = 'Cargo mass low enough for launch';
             cargoLaunch = true;
-            list.style.visibility = 'visible';
         };
         if (cargoLaunch && fuelLaunch) {
-            launchStatus.innerText = 'Shuttle is ready for launch';
+            launchStatus.innerText = 'Shuttle is Ready for Launch';
             launchStatus.style.color = 'green';
             launchReady = 'launch ready'
             list.style.visibility = 'visible';
         } else {
             launchReady = 'no launch';
             launchStatus.innerText = 'Shuttle Not Ready for Launch';
-            launchStatus.style.color = "rgb(199, 37, 78)";
+            launchStatus.style.color = 'red';
             list.style.visibility = 'visible';
         };
     };
